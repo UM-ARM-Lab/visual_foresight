@@ -1,18 +1,20 @@
-import numpy as np
-import imp
-import os
+from collections import OrderedDict
+
 import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
 from .cem_base_controller import CEMBaseController
 from .visualizer.construct_html import save_gifs, save_html, save_img, fill_template
-import matplotlib.pyplot as plt
-from collections import OrderedDict
-from visual_mpc.video_prediction.pred_util import get_context, rollout_predictions
+
 DefaultPredClass = None
+
 
 class PixelCostController(CEMBaseController):
     """
     Cross Entropy Method Stochastic Optimizer
     """
+
     def __init__(self, ag_params, policyparams, gpu_id, ngpu):
         """
 
@@ -39,7 +41,7 @@ class PixelCostController(CEMBaseController):
         self._n_desig = self._hp.designated_pixel_count
         self._img_height, self._img_width = [ag_params['image_height'], ag_params['image_width']]
 
-        self._n_cam = 1 #self.predictor.n_cam
+        self._n_cam = 1  # self.predictor.n_cam
 
         self._desig_pix = None
         self._goal_pix = None
@@ -57,8 +59,8 @@ class PixelCostController(CEMBaseController):
             'designated_pixel_count': 1,
 
             "verbose_img_height": 128,
-            'predictor_propagation':False,
-            'only_take_first_view':False,
+            'predictor_propagation': False,
+            'only_take_first_view': False,
             'state_append': None,
             'finalweight': 10.
         }
@@ -81,10 +83,10 @@ class PixelCostController(CEMBaseController):
             "context_states": self._state
         }
         prediction_dict = self.predictor(context, {'actions': actions})
-        gen_images, gen_distrib = [prediction_dict[k] for k in  ['predicted_frames', 'predicted_pixel_distributions']]
+        gen_images, gen_distrib = [prediction_dict[k] for k in ['predicted_frames', 'predicted_pixel_distributions']]
 
         scores = self._eval_pixel_cost(cem_itr, gen_distrib, gen_images)
-        
+
         if self._verbose_condition(cem_itr):
             verbose_folder = "planning_{}_itr_{}".format(self._t, cem_itr)
             content_dict = OrderedDict()
@@ -97,9 +99,9 @@ class PixelCostController(CEMBaseController):
 
                 for p in range(self._n_desig):
                     h, w = self._desig_pix[c, p]
-                    cv2.circle(start_img,(w,h), 1, (255,0,0), -1)
+                    cv2.circle(start_img, (w, h), 1, (255, 0, 0), -1)
                     h, w = self._goal_pix[c, p]
-                    cv2.circle(start_img,(w,h), 1, (0,0,255), -1)
+                    cv2.circle(start_img, (w, h), 1, (0, 0, 255), -1)
 
                 save_path = save_img(self._verbose_worker, verbose_folder, name, start_img)
                 content_dict[name] = [save_path for _ in visualize_indices]
@@ -116,14 +118,14 @@ class PixelCostController(CEMBaseController):
                         dist_p[v] = rendered
                     desig_name = 'cam_{}_desig_{}'.format(c, p)
                     content_dict[desig_name] = save_gifs(self._verbose_worker, verbose_folder,
-                                                        desig_name, dist_p)
+                                                         desig_name, dist_p)
 
             # render predicted images
             for c in range(self._n_cam):
                 verbose_images = [(gen_images[g_i, :, c] * 255).astype(np.uint8) for g_i in visualize_indices]
                 row_name = 'cam_{}_pred_images'.format(c)
                 content_dict[row_name] = save_gifs(self._verbose_worker, verbose_folder,
-                                                       row_name, verbose_images)
+                                                   row_name, verbose_images)
 
             # save scores
             content_dict['scores'] = scores[visualize_indices]
@@ -140,7 +142,7 @@ class PixelCostController(CEMBaseController):
                 distance_grid = self._get_distancegrid(self._goal_pix[icam, p])
                 score = self._expected_distance(icam, p, gen_distrib[:, :, icam, :, :, p], distance_grid,
                                                 normalize=True)
-                
+
                 scores_per_task.append(score)
                 self._logger.log(
                     'best flow score of task {} cam{}  :{}'.format(p, icam, np.min(scores_per_task[-1])))
@@ -176,14 +178,14 @@ class PixelCostController(CEMBaseController):
         t_mult[-1] = self._hp.finalweight
 
         gen_distrib = gen_distrib.copy()
-        #normalize prob distributions
+        # normalize prob distributions
         if normalize:
-            gen_distrib /= np.sum(np.sum(gen_distrib, axis=2), 2)[:,:, None, None]
+            gen_distrib /= np.sum(np.sum(gen_distrib, axis=2), 2)[:, :, None, None]
         gen_distrib *= distance_grid[None, None]
-        scores = np.sum(np.sum(gen_distrib, axis=2),2)
+        scores = np.sum(np.sum(gen_distrib, axis=2), 2)
 
         scores *= t_mult[None]
-        scores = np.sum(scores, axis=1)/np.sum(t_mult)
+        scores = np.sum(scores, axis=1) / np.sum(t_mult)
         return scores
 
     def _get_distancegrid(self, goal_pix):
@@ -202,10 +204,12 @@ class PixelCostController(CEMBaseController):
         else:
             input_distrib = self._switch_on_pix(self._desig_pix)
         return input_distrib
-    
+
     def _switch_on_pix(self, desig):
-        one_hot_images = np.zeros((1, self._net_context, self._n_cam, self._img_height, self._img_width, self._n_desig), dtype=np.float32)
-        desig = np.clip(desig, np.zeros(2).reshape((1, 2)), np.array([self._img_height, self._img_width]).reshape((1, 2)) - 1).astype(np.int)
+        one_hot_images = np.zeros((1, self._net_context, self._n_cam, self._img_height, self._img_width, self._n_desig),
+                                  dtype=np.float32)
+        desig = np.clip(desig, np.zeros(2).reshape((1, 2)),
+                        np.array([self._img_height, self._img_width]).reshape((1, 2)) - 1).astype(np.int)
         # switch on pixels
         for icam in range(self._n_cam):
             for p in range(self._n_desig):
@@ -231,4 +235,3 @@ class PixelCostController(CEMBaseController):
         self._verbose_worker = verbose_worker
 
         return super(PixelCostController, self).act(t, i_tr, state)
-

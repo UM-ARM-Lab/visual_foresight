@@ -1,10 +1,11 @@
-from setuptools import setup
+## ! DO NOT MANUALLY INVOKE THIS setup.py, USE CATKIN INSTEAD
 
+from distutils.core import setup
+from catkin_pkg.python_setup import generate_distutils_setup
 
-setup(
-    name='visual_foresight',
-    version='0.2dev',
-    packages=['visual_mpc'],
-    license='MIT License',
-    long_description=open('README.md').read(),
-)
+# fetch values from package.xml
+setup_args = generate_distutils_setup(
+    packages=['visual_foresight'],
+    package_dir={'': '.'})
+
+setup(requires=['matplotlib', 'numpy', 'tensorflow'], **setup_args)

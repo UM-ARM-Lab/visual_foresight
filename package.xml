@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>foresight_rospkg</name>
+  <version>0.0.0</version>
+  <description>The foresight_rospkg package</description>
+  
+  <maintainer email="sudeep@todo.todo">sudeep</maintainer>
+
+
+  <license>TODO</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>message_runtime</depend>
+  <depend>std_msgs</depend>
+  <depend>roscpp</depend>
+
+</package>
