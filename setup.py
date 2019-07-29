@@ -8,4 +8,4 @@ setup_args = generate_distutils_setup(
     packages=['visual_foresight'],
     package_dir={'': '.'})
 
-setup(requires=['matplotlib', 'numpy', 'tensorflow'], **setup_args)
+setup(requires=['ray', 'matplotlib', 'numpy', 'tensorflow'], **setup_args)

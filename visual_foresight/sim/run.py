@@ -1,22 +1,22 @@
-from visual_mpc.sim.util.synchronize_tfrecs import sync
-from multiprocessing import Pool, Process, Manager
-import sys
 import argparse
+import copy
+import datetime
 import importlib.machinery
 import importlib.util
-from visual_mpc.sim.simulator import Sim
-from visual_mpc.sim.benchmarks import perform_benchmark
-import copy
-import random
-import numpy as np
-from visual_mpc.agent.utils.traj_saver import record_worker
-import re
 import os
-from visual_mpc.sim.util.combine_score import combine_scores
-import ray
 import pdb
+import random
+import re
 import shutil
-import datetime
+import sys
+from multiprocessing import Pool, Process, Manager
+
+import numpy as np
+import ray
+from visual_mpc.agent.utils.traj_saver import record_worker
+from visual_mpc.sim.simulator import Sim
+from visual_mpc.sim.util.combine_score import combine_scores
+from visual_mpc.sim.util.synchronize_tfrecs import sync
 from visual_mpc.utils.sync import ManagedSyncCounter
 
 
@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--nsplit', type=int, help='number of splits', default=-1)
     parser.add_argument('--isplit', type=int, help='split id', default=-1)
     parser.add_argument('--cloud', dest='cloud', action='store_true', default=False)
-    parser.add_argument('--benchmark', dest='do_benchmark', action='store_true', default=False)    # look into removing this
+    parser.add_argument('--benchmark', dest='do_benchmark', action='store_true', default=False)  # look into removing this
     parser.add_argument('--iex', type=int, help='if different from -1 use only do example', default=-1)
 
     args = parser.parse_args()
@@ -71,7 +71,7 @@ def main():
 
     if args.nsplit != -1:
         assert args.isplit >= 0 and args.isplit < args.nsplit, "isplit should be in [0, nsplit-1]"
-       
+
         n_persplit = max((hyperparams['end_index'] + 1 - hyperparams['start_index']) / args.nsplit, 1)
         hyperparams['end_index'] = int((args.isplit + 1) * n_persplit + hyperparams['start_index'] - 1)
         hyperparams['start_index'] = int(args.isplit * n_persplit + hyperparams['start_index'])
@@ -79,13 +79,13 @@ def main():
     n_traj = hyperparams['end_index'] - hyperparams['start_index'] + 1
     traj_per_worker = int(n_traj // np.float32(n_worker))
     start_idx = [hyperparams['start_index'] + traj_per_worker * i for i in range(n_worker)]
-    end_idx = [hyperparams['start_index'] + traj_per_worker * (i+1)-1 for i in range(n_worker)]
+    end_idx = [hyperparams['start_index'] + traj_per_worker * (i + 1) - 1 for i in range(n_worker)]
 
-
-    if 'gen_xml' in hyperparams['agent']: #remove old auto-generated xml files
+    if 'gen_xml' in hyperparams['agent']:  # remove old auto-generated xml files
         try:
             os.system("rm {}".format('/'.join(str.split(hyperparams['agent']['filename'], '/')[:-1]) + '/auto_gen/*'))
-        except: pass
+        except:
+            pass
 
     if 'RESULT_DIR' in os.environ:
         if 'exp_name' in hyperparams:
@@ -105,7 +105,7 @@ def main():
             mode = 'experiments'
 
         result_dir = '{}/{}/{}/exp_{}_{}_{}_{}_{}'.format(os.environ['RESULT_DIR'], mode, exp_name, now.year, now.month,
-                                                       now.day, now.hour, now.minute)
+                                                          now.day, now.hour, now.minute)
         os.makedirs(result_dir)
         shutil.copyfile(hyperparams_file, '{}/hparams.py'.format(result_dir))
 
@@ -122,7 +122,7 @@ def main():
         check_and_pop(hyperparams, 'save_raw_images')
         check_and_pop(hyperparams['agent'], 'make_final_gif')
         check_and_pop(hyperparams['agent'], 'make_final_gif_pointoverlay')
-        hyperparams['agent']['data_save_dir'] = '/result/'    # by default save code to the /result folder in docker image
+        hyperparams['agent']['data_save_dir'] = '/result/'  # by default save code to the /result folder in docker image
     else:
         result_dir = hyperparams['current_dir'] + '/verbose'
 
@@ -156,8 +156,8 @@ def main():
         use_worker(conflist[0], args.iex, args.ngpu)
 
     if 'data_save_dir' in hyperparams['agent'] and not hyperparams.get('save_raw_images', False):
-        record_queue.put(None)           # send flag to background thread that it can end saving after it's done
-        record_saver_proc.join()         # joins thread and continues execution
+        record_queue.put(None)  # send flag to background thread that it can end saving after it's done
+        record_saver_proc.join()  # joins thread and continues execution
 
     if 'master_datadir' in hyperparams['agent']:
         ray.wait([sync_todo_id])
@@ -175,7 +175,7 @@ def prepare_saver(hyperparams):
     if hyperparams.get('save_data', True) and not hyperparams.get('save_raw_images', False):
         seperate_good, traj_per_file = hyperparams.get('seperate_good', False), hyperparams.get('traj_per_file', 16)
         record_saver_proc = Process(target=record_worker, args=(
-        record_queue, save_dir, T, seperate_good, traj_per_file, hyperparams['start_index']))
+            record_queue, save_dir, T, seperate_good, traj_per_file, hyperparams['start_index']))
         record_saver_proc.start()
     else:
         record_saver_proc = None
@@ -185,8 +185,8 @@ def prepare_saver(hyperparams):
 def sorted_alphanumeric(l):
     """ Sort the given iterable in the way that humans expect."""
     convert = lambda text: int(text) if text.isdigit() else text
-    alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ]
-    return sorted(l, key = alphanum_key)
+    alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
+    return sorted(l, key=alphanum_key)
 
 
 if __name__ == '__main__':
