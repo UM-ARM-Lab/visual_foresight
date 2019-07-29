@@ -1,6 +1,6 @@
-from visual_mpc.policy.policy import Policy
+from visual_foresight.policy.policy import Policy
 import numpy as np
-from visual_mpc.policy.utils.controller_utils import truncate_movement
+from visual_foresight.policy.utils.controller_utils import truncate_movement
 import copy
 
 

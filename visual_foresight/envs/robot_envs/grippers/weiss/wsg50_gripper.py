@@ -1,6 +1,6 @@
 import rospy
 from wsg_50_common.msg import Cmd, Status
-from visual_mpc.envs.robot_envs import GripperInterface
+from visual_foresight.envs.robot_envs import GripperInterface
 import logging
 from threading import Semaphore, Lock, Thread
 import time

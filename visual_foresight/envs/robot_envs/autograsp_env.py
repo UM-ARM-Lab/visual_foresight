@@ -1,6 +1,6 @@
-from visual_mpc.envs.robot_envs.base_env import BaseRobotEnv
+from visual_foresight.envs.robot_envs.base_env import BaseRobotEnv
 import copy
-from visual_mpc.envs.util.action_util import autograsp_dynamics
+from visual_foresight.envs.util.action_util import autograsp_dynamics
 import numpy as np
 import logging
 

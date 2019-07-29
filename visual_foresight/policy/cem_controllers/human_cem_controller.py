@@ -1,6 +1,6 @@
 from .cem_base_controller import CEMBaseController
 from .visualizer.construct_html import save_gifs, save_img, save_html, fill_template
-from visual_mpc.video_prediction.pred_util import get_context, rollout_predictions
+from visual_foresight.video_prediction.pred_util import get_context, rollout_predictions
 import numpy as np
 import imp
 from collections import OrderedDict

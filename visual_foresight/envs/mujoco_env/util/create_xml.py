@@ -8,7 +8,7 @@ import random
 import numpy as np
 import stl
 from stl import mesh
-import visual_mpc.envs as envs
+import visual_foresight.envs as envs
 
 def find_mins_maxs(obj):
     minx = maxx = miny = maxy = minz = maxz = None
@@ -267,7 +267,7 @@ def create_root_xml(filename):
     return outfile
 
 if __name__ == '__main__':
-    params = imp.load_source('hyper', "/home/frederik/Documents/catkin_ws/src/visual_mpc/pushing_data/cartgripper_genobj/hyperparams.py")
+    params = imp.load_source('hyper', "/home/pmitrano/catkin_ws/src/visual_foresight/pushing_data/cartgripper_genobj/hyperparams.py")
     agentparams = params.config['agent']
     # create_xml(agentparams)
     create_root_xml(agentparams)

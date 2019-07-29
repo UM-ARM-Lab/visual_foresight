@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pickle
 from collections import OrderedDict
-from visual_mpc.utils.traj_util import make_traj_name_list
+from visual_foresight.utils.traj_util import make_traj_name_list
 from .util.combine_score import write_scores
 
 

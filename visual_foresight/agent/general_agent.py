@@ -1,8 +1,8 @@
 """ This file defines an agent for the MuJoCo simulator environment. """
 import copy
 import numpy as np
-from visual_mpc.policy import get_policy_args
-from visual_mpc.utils.im_utils import resize_store
+from visual_foresight.policy import get_policy_args
+from visual_foresight.utils.im_utils import resize_store
 from .utils.file_saver import start_file_worker
 
 

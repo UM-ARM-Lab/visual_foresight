@@ -1,5 +1,5 @@
 import numpy as np
-from visual_mpc.policy.utils.controller_utils import truncate_movement
+from visual_foresight.policy.utils.controller_utils import truncate_movement
 from .cem_sampler import CEMSampler
 
 class AutograspEpsilon(CEMSampler):

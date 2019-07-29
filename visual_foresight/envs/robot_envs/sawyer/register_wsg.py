@@ -98,7 +98,7 @@ def main():
 
 
 def comp_gripper():
-    import visual_mpc.envs.robot_envs.grippers.weiss as weiss_pkg
+    import visual_foresight.envs.robot_envs.grippers.weiss as weiss_pkg
     urdf_frag = '/'.join(
         str.split(weiss_pkg.__file__, '/')[:-1]) + '/wsg50_xml/wsg_50_mod.urdf'
     rospy.init_node('rsdk_configure_urdf', anonymous=True)

@@ -1,9 +1,9 @@
 """ Hyperparameters for Large Scale Data Collection (LSDC) """
 
 import os.path
-from visual_mpc.policy.cem_controllers.variants.ensemble_vidpred import CEM_Controller_Ensemble_Vidpred
-from visual_mpc.agent.benchmarking_agent import BenchmarkAgent
-from visual_mpc.envs.mujoco_env.cartgripper_env.autograsp_env import AutograspCartgripperEnv
+from visual_foresight.policy.cem_controllers.variants.ensemble_vidpred import CEM_Controller_Ensemble_Vidpred
+from visual_foresight.agent.benchmarking_agent import BenchmarkAgent
+from visual_foresight.envs.mujoco_env.cartgripper_env.autograsp_env import AutograspCartgripperEnv
 import numpy as np
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])

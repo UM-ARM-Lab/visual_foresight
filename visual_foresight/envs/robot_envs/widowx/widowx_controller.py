@@ -1,6 +1,6 @@
-from visual_mpc.envs import robot_envs
+from visual_foresight.envs import robot_envs
 import cPickle  as pkl
-from visual_mpc.envs.robot_envs import RobotController
+from visual_foresight.envs.robot_envs import RobotController
 import numpy as np
 import rospy
 import time
@@ -12,7 +12,7 @@ from pyquaternion import Quaternion
 from geometry_msgs.msg import Quaternion as Quaternion_msg
 from std_msgs.msg import Float64
 from sensor_msgs.msg import JointState
-from visual_mpc.agent import Environment_Exception
+from visual_foresight.agent import Environment_Exception
 from threading import Lock
 import pybullet as p
 import time

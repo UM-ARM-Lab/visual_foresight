@@ -4,7 +4,7 @@ from .cem_base_controller import CEMBaseController
 from .visualizer.construct_html import save_gifs, save_html, save_img, fill_template
 import matplotlib.pyplot as plt
 from collections import OrderedDict
-from visual_mpc.video_prediction.pred_util import get_context, rollout_predictions
+from visual_foresight.video_prediction.pred_util import get_context, rollout_predictions
 import cv2
 
 

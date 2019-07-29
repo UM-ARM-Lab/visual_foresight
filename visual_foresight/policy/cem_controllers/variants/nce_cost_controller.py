@@ -1,8 +1,8 @@
-from visual_mpc.policy.cem_controllers import CEMBaseController
+from visual_foresight.policy.cem_controllers import CEMBaseController
 import imp
 import control_embedding
 import numpy as np
-from visual_mpc.video_prediction.pred_util import get_context, rollout_predictions
+from visual_foresight.video_prediction.pred_util import get_context, rollout_predictions
 from ..visualizer.construct_html import save_gifs, save_html, save_img, fill_template, img_entry_html
 from ..visualizer.plot_helper import plot_score_hist
 from collections import OrderedDict

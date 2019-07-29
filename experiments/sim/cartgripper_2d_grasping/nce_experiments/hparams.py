@@ -1,7 +1,7 @@
 import os.path
-from visual_mpc.policy.cem_controllers import NCECostController
-from visual_mpc.agent.benchmarking_agent import BenchmarkAgent
-from visual_mpc.envs.mujoco_env.cartgripper_env.cartgripper_xz_grasp import CartgripperXZGrasp
+from visual_foresight.policy.cem_controllers import NCECostController
+from visual_foresight.agent.benchmarking_agent import BenchmarkAgent
+from visual_foresight.envs.mujoco_env.cartgripper_env.cartgripper_xz_grasp import CartgripperXZGrasp
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])
 current_dir = os.path.dirname(os.path.realpath(__file__))

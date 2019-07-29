@@ -1,6 +1,6 @@
-from visual_mpc.sim.util.config_agent import CreateConfigAgent
-from visual_mpc.envs.mujoco_env.cartgripper_env.autograsp_env import AutograspCartgripperEnv
-from visual_mpc.policy.policy import DummyPolicy
+from visual_foresight.sim.util.config_agent import CreateConfigAgent
+from visual_foresight.envs.mujoco_env.cartgripper_env.autograsp_env import AutograspCartgripperEnv
+from visual_foresight.policy.policy import DummyPolicy
 import os
 
 

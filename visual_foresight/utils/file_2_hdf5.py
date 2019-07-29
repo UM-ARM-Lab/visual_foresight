@@ -6,7 +6,7 @@ import os
 import imageio
 import io
 from multiprocessing import Pool, Manager
-from visual_mpc.utils.sync import ManagedSyncCounter
+from visual_foresight.utils.sync import ManagedSyncCounter
 import random
 import functools
 from tqdm import tqdm

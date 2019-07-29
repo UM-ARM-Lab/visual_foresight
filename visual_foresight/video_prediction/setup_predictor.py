@@ -3,7 +3,7 @@ import numpy as np
 import copy
 from tensorflow.python.platform import gfile
 from .vpred_model_interface import VPred_Model_Interface
-from visual_mpc.utils.logger import Logger
+from visual_foresight.utils.logger import Logger
 from .checkpoint_matcher import variable_checkpoint_matcher
 import re
 from tensorflow.python.framework.errors_impl import NotFoundError

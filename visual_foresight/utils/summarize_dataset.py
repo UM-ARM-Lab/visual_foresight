@@ -1,7 +1,7 @@
 import argparse
 import glob
 import cv2
-from visual_mpc.utils.im_utils import npy_to_gif
+from visual_foresight.utils.im_utils import npy_to_gif
 import os
 
 

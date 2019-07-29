@@ -1,8 +1,8 @@
 """ Hyperparameters for Large Scale Data Collection (LSDC) """
 import os.path
-from visual_mpc.policy.handcrafted.lifting_policy import LiftingPolicy
-from visual_mpc.agent.general_agent import GeneralAgent
-from visual_mpc.envs.mujoco_env.cartgripper_env.cartgripper_xz_grasp import CartgripperXZGrasp
+from visual_foresight.policy.handcrafted.lifting_policy import LiftingPolicy
+from visual_foresight.agent.general_agent import GeneralAgent
+from visual_foresight.envs.mujoco_env.cartgripper_env.cartgripper_xz_grasp import CartgripperXZGrasp
 
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])

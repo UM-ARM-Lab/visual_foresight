@@ -1,10 +1,10 @@
-from visual_mpc.envs.mujoco_env.base_mujoco_env import BaseMujocoEnv
+from visual_foresight.envs.mujoco_env.base_mujoco_env import BaseMujocoEnv
 import numpy as np
-import visual_mpc.envs as envs
-from visual_mpc.envs.mujoco_env.util.create_xml import create_object_xml, create_root_xml, clean_xml
+import visual_foresight.envs as envs
+from visual_foresight.envs.mujoco_env.util.create_xml import create_object_xml, create_root_xml, clean_xml
 import copy
 from pyquaternion import Quaternion
-from visual_mpc.utils.im_utils import npy_to_mp4
+from visual_foresight.utils.im_utils import npy_to_mp4
 
 
 BASE_DIR = '/'.join(str.split(envs.__file__, '/')[:-1])

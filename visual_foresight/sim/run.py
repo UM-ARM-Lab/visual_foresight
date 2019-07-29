@@ -13,11 +13,11 @@ from multiprocessing import Pool, Process, Manager
 
 import numpy as np
 import ray
-from visual_mpc.agent.utils.traj_saver import record_worker
-from visual_mpc.sim.simulator import Sim
-from visual_mpc.sim.util.combine_score import combine_scores
-from visual_mpc.sim.util.synchronize_tfrecs import sync
-from visual_mpc.utils.sync import ManagedSyncCounter
+from visual_foresight.agent.utils.traj_saver import record_worker
+from visual_foresight.sim.simulator import Sim
+from visual_foresight.sim.util.combine_score import combine_scores
+from visual_foresight.sim.util.synchronize_tfrecs import sync
+from visual_foresight.utils.sync import ManagedSyncCounter
 
 
 def use_worker(conf, iex=-1, ngpu=1):

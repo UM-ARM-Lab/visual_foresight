@@ -17,7 +17,7 @@ class Pushback_Recorder(object):
         """
         if robot_type == 'sawyer':
             import intera_interface
-            from visual_mpc.envs.robot_envs.sawyer.sawyer_impedance import SawyerImpedanceController
+            from visual_foresight.envs.robot_envs.sawyer.sawyer_impedance import SawyerImpedanceController
             self._controller = SawyerImpedanceController('recorder_bot', False, gripper_attached='none')
             self._controller.move_to_neutral()
 
@@ -28,7 +28,7 @@ class Pushback_Recorder(object):
             self.stop_callid = self._navigator.register_callback(self.stop_recording, 'right_button_square')
         elif robot_type == 'widowx':
             import threading
-            from visual_mpc.envs.robot_envs.widowx.widowx_controller import WidowXController
+            from visual_foresight.envs.robot_envs.widowx.widowx_controller import WidowXController
             from keyboard.msg import Key
             self._controller = WidowXController('recorder_bot', False)
             self._control_rate = rospy.Rate(50)
@@ -47,7 +47,7 @@ class Pushback_Recorder(object):
             from pynput import mouse
             from pynput import keyboard
             import baxter_interface
-            from visual_mpc.envs.robot_envs.baxter.baxter_impedance import BaxterImpedanceController
+            from visual_foresight.envs.robot_envs.baxter.baxter_impedance import BaxterImpedanceController
             self._controller = BaxterImpedanceController('baxter', False, gripper_attached='none',limb = 'right')
             self._controller.move_to_neutral()
             # Navigator Rethink button press

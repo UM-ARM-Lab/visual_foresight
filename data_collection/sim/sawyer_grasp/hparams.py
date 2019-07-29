@@ -1,8 +1,8 @@
 """ Hyperparameters for Large Scale Data Collection (LSDC) """
 import os.path
-from visual_mpc.policy.random.gaussian import GaussianPolicy
-from visual_mpc.agent.general_agent import GeneralAgent
-from visual_mpc.envs.mujoco_env.sawyer_env.base_sawyer_env import SawyerEnv
+from visual_foresight.policy.random.gaussian import GaussianPolicy
+from visual_foresight.agent.general_agent import GeneralAgent
+from visual_foresight.envs.mujoco_env.sawyer_env.base_sawyer_env import SawyerEnv
 import numpy as np
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])

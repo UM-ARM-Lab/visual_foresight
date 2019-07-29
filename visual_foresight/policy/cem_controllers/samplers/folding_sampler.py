@@ -1,7 +1,7 @@
 import copy
 import numpy as np
 from .cem_sampler import CEMSampler
-from visual_mpc.policy.utils.controller_utils import construct_initial_sigma
+from visual_foresight.policy.utils.controller_utils import construct_initial_sigma
 
 
 class FoldingCEMSampler(CEMSampler):

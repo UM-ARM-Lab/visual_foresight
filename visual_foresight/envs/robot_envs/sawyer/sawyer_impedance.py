@@ -1,17 +1,17 @@
 import rospy
 from pyquaternion import Quaternion
-from visual_mpc.envs.robot_envs import RobotController
+from visual_foresight.envs.robot_envs import RobotController
 import numpy as np
-from visual_mpc.envs.util.interpolation import CSpline
+from visual_foresight.envs.util.interpolation import CSpline
 from intera_core_msgs.msg import JointCommand
 import cPickle as pkl
 import intera_interface
 import os
-from visual_mpc.envs.robot_envs import RobotController
+from visual_foresight.envs.robot_envs import RobotController
 import logging
 from .control_util import precalculate_interpolation, LatestEEObs, CONTROL_PERIOD, NEUTRAL_JOINT_ANGLES, NEUTRAL_JOINT_CMD, \
                           N_JOINTS, max_accel_mag, max_vel_mag, RESET_SKIP
-import visual_mpc.envs.robot_envs as robot_envs
+import visual_foresight.envs.robot_envs as robot_envs
 
 
 class SawyerImpedanceController(RobotController):
@@ -25,13 +25,13 @@ class SawyerImpedanceController(RobotController):
     
     def _init_gripper(self, gripper_attached):
         if gripper_attached == 'none':
-            from visual_mpc.envs.robot_envs import GripperInterface
+            from visual_foresight.envs.robot_envs import GripperInterface
             self._gripper = GripperInterface()
         elif gripper_attached == 'wsg-50':
-            from visual_mpc.envs.robot_envs.grippers.weiss.wsg50_gripper import WSG50Gripper
+            from visual_foresight.envs.robot_envs.grippers.weiss.wsg50_gripper import WSG50Gripper
             self._gripper = WSG50Gripper()
         elif gripper_attached == 'sawyer_gripper':
-            from visual_mpc.envs.robot_envs.grippers.sawyer.default_sawyer_gripper import SawyerDefaultGripper
+            from visual_foresight.envs.robot_envs.grippers.sawyer.default_sawyer_gripper import SawyerDefaultGripper
             self._gripper = SawyerDefaultGripper()
         else:
             logging.getLogger('robot_logger').error("Gripper not supported!")

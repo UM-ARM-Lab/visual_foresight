@@ -1,6 +1,6 @@
 from pyquaternion import Quaternion
 import inverse_kinematics
-from visual_mpc.envs.util.interpolation import QuinticSpline
+from visual_foresight.envs.util.interpolation import QuinticSpline
 import logging
 from baxter_core_msgs.msg import EndpointState
 from threading import Condition

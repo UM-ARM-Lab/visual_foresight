@@ -1,5 +1,5 @@
 import numpy as np
-from visual_mpc.policy.policy import Policy
+from visual_foresight.policy.policy import Policy
 
 
 class CollectExamplesPolicy(Policy):

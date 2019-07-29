@@ -1,4 +1,4 @@
-from visual_mpc.envs.robot_envs import GripperInterface
+from visual_foresight.envs.robot_envs import GripperInterface
 import intera_interface
 import time
 

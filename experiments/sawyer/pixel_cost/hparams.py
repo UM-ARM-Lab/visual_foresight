@@ -1,9 +1,9 @@
 import numpy as np
 import os
-from visual_mpc.agent.benchmarking_agent import BenchmarkAgent
-from visual_mpc.envs.sawyer_robot.autograsp_sawyer_env import AutograspSawyerEnv
-from visual_mpc.policy.cem_controllers.pixel_cost_controller import PixelCostController
-from visual_mpc.envs.sawyer_robot.util.topic_utils import IMTopic
+from visual_foresight.agent.benchmarking_agent import BenchmarkAgent
+from visual_foresight.envs.sawyer_robot.autograsp_sawyer_env import AutograspSawyerEnv
+from visual_foresight.policy.cem_controllers.pixel_cost_controller import PixelCostController
+from visual_foresight.envs.sawyer_robot.util.topic_utils import IMTopic
 
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])

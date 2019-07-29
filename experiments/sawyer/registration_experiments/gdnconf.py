@@ -1,6 +1,6 @@
-import visual_mpc.registration_network as reg_base
+import visual_foresight.registration_network as reg_base
 import os
-from visual_mpc.registration_network.multiview_testgdn import MulltiviewTestGDN
+from visual_foresight.registration_network.multiview_testgdn import MulltiviewTestGDN
 base_dir = reg_base.__file__
 base_dir = '/'.join(str.split(base_dir, '/')[:-1]) + '/pretrained_models/multiview_new_env_96x128_len8/'
 

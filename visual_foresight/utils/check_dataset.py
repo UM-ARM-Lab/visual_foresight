@@ -3,7 +3,7 @@ import glob
 import argparse
 import random
 import numpy as np
-from visual_mpc.utils.im_utils import npy_to_gif
+from visual_foresight.utils.im_utils import npy_to_gif
 import cv2
 import os
 

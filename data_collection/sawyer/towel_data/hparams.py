@@ -2,10 +2,10 @@
 
 import os.path
 import numpy as np
-from visual_mpc.policy.random.random_fold_policy import RandomFoldPolicy
-from visual_mpc.agent.general_agent import GeneralAgent
-from visual_mpc.envs.sawyer_robot.autograsp_sawyer_env import AutograspSawyerEnv
-from visual_mpc.envs.sawyer_robot.util.topic_utils import IMTopic
+from visual_foresight.policy.random.random_fold_policy import RandomFoldPolicy
+from visual_foresight.agent.general_agent import GeneralAgent
+from visual_foresight.envs.sawyer_robot.autograsp_sawyer_env import AutograspSawyerEnv
+from visual_foresight.envs.sawyer_robot.util.topic_utils import IMTopic
 
 
 if 'VMPC_DATA_DIR' in os.environ:

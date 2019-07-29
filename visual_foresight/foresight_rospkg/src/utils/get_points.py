@@ -7,7 +7,7 @@ import numpy as np
 
 def main_sawyer():
     import intera_interface
-    from visual_mpc.envs.robot_envs.sawyer.sawyer_impedance import SawyerImpedanceController
+    from visual_foresight.envs.robot_envs.sawyer.sawyer_impedance import SawyerImpedanceController
     
     controller = SawyerImpedanceController('sawyer', True, gripper_attached='none')       # doesn't initial gripper object even if gripper is attached
 
@@ -24,7 +24,7 @@ def main_sawyer():
 
 def main_baxter(limb='right'):
     import baxter_interface
-    from visual_mpc.envs.robot_envs.baxter.baxter_impedance import BaxterImpedanceController
+    from visual_foresight.envs.robot_envs.baxter.baxter_impedance import BaxterImpedanceController
     controller = BaxterImpedanceController('baxter', True, gripper_attached='none', limb=limb)
 
     def print_eep(value):

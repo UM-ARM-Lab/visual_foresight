@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import argparse
-from visual_mpc.envs.sawyer_robot.util.camera_recorder import CameraRecorder
-from visual_mpc.envs.sawyer_robot.util.topic_utils import IMTopic
-from visual_mpc.envs.sawyer_robot.util.user_interface import select_points
+from visual_foresight.envs.sawyer_robot.util.camera_recorder import CameraRecorder
+from visual_foresight.envs.sawyer_robot.util.topic_utils import IMTopic
+from visual_foresight.envs.sawyer_robot.util.user_interface import select_points
 import datetime
 import rospy
 import os

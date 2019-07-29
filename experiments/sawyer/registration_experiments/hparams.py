@@ -1,7 +1,7 @@
 import os
-from visual_mpc.agent.benchmarking_agent import BenchmarkAgent
-from visual_mpc.envs.sawyer_robot.autograsp_sawyer_env import AutograspSawyerEnv
-from visual_mpc.policy.cem_controllers.register_gtruth_controller import Register_Gtruth_Controller
+from visual_foresight.agent.benchmarking_agent import BenchmarkAgent
+from visual_foresight.envs.sawyer_robot.autograsp_sawyer_env import AutograspSawyerEnv
+from visual_foresight.policy.cem_controllers.register_gtruth_controller import Register_Gtruth_Controller
 
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])

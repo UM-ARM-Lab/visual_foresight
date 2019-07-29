@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from visual_mpc.datasets.base_dataset import BaseVideoDataset
+from visual_foresight.datasets.base_dataset import BaseVideoDataset
 
 
 dataset_path = None                              # path to dataset (aka './towel_pick_30k')  

@@ -1,6 +1,6 @@
 from .cem_sampler import CEMSampler
 import numpy as np
-from visual_mpc.policy.utils.controller_utils import construct_initial_sigma, reuse_cov,\
+from visual_foresight.policy.utils.controller_utils import construct_initial_sigma, reuse_cov,\
     truncate_movement, make_blockdiagonal, discretize
 
 

@@ -1,10 +1,10 @@
 """ Hyperparameters for Large Scale Data Collection (LSDC) """
 
 import os.path
-from visual_mpc.policy.interactive.classifier_collector import CollectExamplesPolicy
-from visual_mpc.agent.general_agent import GeneralAgent
-from visual_mpc.envs.sawyer_robot.vanilla_sawyer_env import VanillaSawyerEnv
-from visual_mpc.envs.sawyer_robot.util.topic_utils import IMTopic
+from visual_foresight.policy.interactive.classifier_collector import CollectExamplesPolicy
+from visual_foresight.agent.general_agent import GeneralAgent
+from visual_foresight.envs.sawyer_robot.vanilla_sawyer_env import VanillaSawyerEnv
+from visual_foresight.envs.sawyer_robot.util.topic_utils import IMTopic
 import numpy as np
 
 

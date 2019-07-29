@@ -1,4 +1,4 @@
-from visual_mpc.envs.base_env import BaseEnv
+from visual_foresight.envs.base_env import BaseEnv
 from .robosuite_wrappers.SawyerIKEnv import make_sawyer_env
 import numpy as np
 from robosuite.utils.transform_utils import mat2quat, rotation_matrix

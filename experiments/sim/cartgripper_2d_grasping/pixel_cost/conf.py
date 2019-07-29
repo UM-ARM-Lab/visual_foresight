@@ -1,11 +1,11 @@
 import os
-from visual_mpc.video_prediction.setup_predictor import setup_predictor
+from visual_foresight.video_prediction.setup_predictor import setup_predictor
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
 # local output directory
 OUT_DIR = current_dir + '/modeldata'
 
-from visual_mpc.video_prediction.vpred_model_interface import VPred_Model_Interface
+from visual_foresight.video_prediction.vpred_model_interface import VPred_Model_Interface
 import video_prediction
 
 

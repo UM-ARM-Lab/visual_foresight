@@ -1,8 +1,8 @@
-from visual_mpc.envs.robot_envs import get_controller_class
-from visual_mpc.envs.base_env import BaseEnv
+from visual_foresight.envs.robot_envs import get_controller_class
+from visual_foresight.envs.base_env import BaseEnv
 import numpy as np
 import random
-from visual_mpc.agent import Image_Exception
+from visual_foresight.agent import Image_Exception
 from .util.camera_recorder import CameraRecorder
 import copy
 import rospy

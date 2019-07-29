@@ -1,7 +1,7 @@
 import numpy as np
-from visual_mpc.utils.logger import Logger
+from visual_foresight.utils.logger import Logger
 from .samplers import GaussianCEMSampler
-from visual_mpc.policy.policy import Policy
+from visual_foresight.policy.policy import Policy
 
 
 class CEMBaseController(Policy):

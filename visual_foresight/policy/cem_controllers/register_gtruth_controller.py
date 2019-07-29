@@ -4,7 +4,7 @@ import numpy as np
 from .visualizer.render_utils import resize_image
 from .visualizer.make_cem_visuals import CEM_Visual_Preparation_Registration
 import imp
-from visual_mpc.registration_network.setup_registration import setup_gdn
+from visual_foresight.registration_network.setup_registration import setup_gdn
 
 
 class Register_Gtruth_Controller(PixelCostController):

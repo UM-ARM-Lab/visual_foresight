@@ -1,8 +1,8 @@
 """ This file defines the linear Gaussian policy class. """
 import numpy as np
-from visual_mpc.policy.policy import Policy
-from visual_mpc.policy.utils.controller_utils import construct_initial_sigma, truncate_movement
-from visual_mpc.envs.util.action_util import autograsp_grip_logic
+from visual_foresight.policy.policy import Policy
+from visual_foresight.policy.utils.controller_utils import construct_initial_sigma, truncate_movement
+from visual_foresight.envs.util.action_util import autograsp_grip_logic
 
 
 class GaussianPolicy(Policy):

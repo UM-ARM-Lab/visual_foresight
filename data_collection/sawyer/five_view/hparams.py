@@ -1,10 +1,10 @@
 """ Hyperparameters for Large Scale Data Collection (LSDC) """
 
 import os.path
-from visual_mpc.policy.random.gaussian import GaussianPolicy
-from visual_mpc.agent.general_agent import GeneralAgent
-from visual_mpc.envs.robot_envs.autograsp_env import AutograspEnv
-from visual_mpc.envs.robot_envs.util.topic_utils import IMTopic
+from visual_foresight.policy.random.gaussian import GaussianPolicy
+from visual_foresight.agent.general_agent import GeneralAgent
+from visual_foresight.envs.robot_envs.autograsp_env import AutograspEnv
+from visual_foresight.envs.robot_envs.util.topic_utils import IMTopic
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])
 current_dir = os.path.dirname(os.path.realpath(__file__))

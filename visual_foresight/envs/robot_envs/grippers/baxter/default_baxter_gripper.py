@@ -1,4 +1,4 @@
-from visual_mpc.envs.robot_envs import GripperInterface
+from visual_foresight.envs.robot_envs import GripperInterface
 import baxter_interface
 import time
 from baxter_interface import CHECK_VERSION

@@ -1,8 +1,8 @@
 import rospy
 from pyquaternion import Quaternion
-from visual_mpc.envs.robot_envs import RobotController
+from visual_foresight.envs.robot_envs import RobotController
 import numpy as np
-from visual_mpc.envs.util.interpolation import CSpline
+from visual_foresight.envs.util.interpolation import CSpline
 from baxter_core_msgs.msg import JointCommand
 import cPickle as pkl
 import baxter_interface
@@ -10,7 +10,7 @@ import os
 import logging
 from .control_util import precalculate_interpolation, LatestEEObs, CONTROL_PERIOD, NEUTRAL_JOINT_ANGLES, NEUTRAL_JOINT_CMD, \
                           N_JOINTS, max_accel_mag, max_vel_mag, RESET_SKIP
-import visual_mpc.envs.robot_envs as robot_envs
+import visual_foresight.envs.robot_envs as robot_envs
 
 
 class BaxterImpedanceController(RobotController):
@@ -39,10 +39,10 @@ class BaxterImpedanceController(RobotController):
     
     def _init_gripper(self, gripper_attached):
         if gripper_attached == 'none':
-            from visual_mpc.envs.robot_envs import GripperInterface
+            from visual_foresight.envs.robot_envs import GripperInterface
             self._gripper = GripperInterface()
         elif gripper_attached == 'baxter_gripper':
-            from visual_mpc.envs.robot_envs.grippers.baxter.default_baxter_gripper import BaxterDefaultGripper
+            from visual_foresight.envs.robot_envs.grippers.baxter.default_baxter_gripper import BaxterDefaultGripper
             self._gripper = BaxterDefaultGripper()
         else:
             logging.getLogger('robot_logger').error("Gripper type '{}' not supported!".format(gripper_attached))

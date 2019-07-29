@@ -1,12 +1,12 @@
 import numpy as np
 import os
-from visual_mpc.agent.benchmarking_agent import BenchmarkAgent
-from visual_mpc.envs.robot_envs.autograsp_env import AutograspEnv
-from visual_mpc.policy.cem_controllers.samplers.folding_sampler import FoldingCEMSampler
-from visual_mpc.policy.cem_controllers.variants.classifier_cost import ClassifierController
+from visual_foresight.agent.benchmarking_agent import BenchmarkAgent
+from visual_foresight.envs.robot_envs.autograsp_env import AutograspEnv
+from visual_foresight.policy.cem_controllers.samplers.folding_sampler import FoldingCEMSampler
+from visual_foresight.policy.cem_controllers.variants.classifier_cost import ClassifierController
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])
 current_dir = os.path.dirname(os.path.realpath(__file__))
-from visual_mpc.envs.robot_envs.util.topic_utils import IMTopic
+from visual_foresight.envs.robot_envs.util.topic_utils import IMTopic
 
 
 env_params = {

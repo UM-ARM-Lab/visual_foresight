@@ -1,5 +1,5 @@
 """ Wraps general agent class to allow sim to easily create new task definitions """
-from visual_mpc.agent.general_agent import GeneralAgent
+from visual_foresight.agent.general_agent import GeneralAgent
 
 
 class CreateConfigAgent(GeneralAgent):

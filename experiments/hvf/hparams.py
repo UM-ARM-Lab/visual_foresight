@@ -1,10 +1,10 @@
 import numpy as np
 import os
-from visual_mpc.agent.benchmarking_agent import BenchmarkAgent
-from visual_mpc.envs.robot_envs.autograsp_env import AutograspEnv
-from visual_mpc.policy.cem_controllers.pixel_cost_controller import PixelCostController # yours
-from visual_mpc.policy.cem_controllers.goal_im_controller import GoalImController
-from visual_mpc.envs.robot_envs.util.topic_utils import IMTopic
+from visual_foresight.agent.benchmarking_agent import BenchmarkAgent
+from visual_foresight.envs.robot_envs.autograsp_env import AutograspEnv
+from visual_foresight.policy.cem_controllers.pixel_cost_controller import PixelCostController # yours
+from visual_foresight.policy.cem_controllers.goal_im_controller import GoalImController
+from visual_foresight.envs.robot_envs.util.topic_utils import IMTopic
 
 
 BASE_DIR = '/'.join(str.split(__file__, '/')[:-1])
